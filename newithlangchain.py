@@ -1,14 +1,19 @@
 import os
 from typing import Dict
+
 import streamlit as st
 from tavily import TavilyClient
 import google.generativeai as genai
 from langgraph.graph import StateGraph, END
 from dotenv import load_dotenv
+
 from langchain.llms.base import LLM
 from langchain.schema import Generation, LLMResult
 
-load_dotenv()  
+
+load_dotenv()
+
+
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 gemini_model = genai.GenerativeModel('gemini-1.5-pro')
 
@@ -37,12 +42,21 @@ def research_agent(state: Dict):
 
 def drafting_agent(state: Dict):
     context = "\n".join([res.get('content', '') for res in state["research_results"]])
-    response_text = llm(context)
+    prompt = f"""
+    You are an expert research assistant.
+    Based on the search results below, write a clear, concise, and informative summary and points that could help.
+
+    Search Results:
+    {context}
+    """
+    response_text = llm._call(prompt)  
     return {
         "research_results": state["research_results"],
         "drafted_answer": response_text,
         "query": state["query"]
     }
+
+
 def build_workflow():
     workflow = StateGraph(dict)
     workflow.add_node("research", research_agent)
