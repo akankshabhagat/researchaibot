@@ -1,7 +1,7 @@
 
 ### 👩‍💻 Introduction
 
-I’ve built an intelligent dual-agent research system that can automatically gather and summarize information from the web. It’s designed using modular, modern AI frameworks like **LangGraph** and **LangChain**, integrates **Tavily** for real-time web crawling, and uses **Google Gemini** to generate high-quality, human-like responses. The final output is served through a clean and simple **Streamlit** interface.
+I’ve built an intelligent dual-agent research system that can automatically gather and summarize information from the web. It’s designed using modular, modern AI frameworks like **LangGraph** and **LangChain**, integrates **Tavily** for real-time web crawling, and uses **Google Gemini** to generate high-quality responses. The final output is served through a clean and simple **Streamlit** interface.
 the researchaibot is deployed on streamlits community cloud  and is running .feel free to give it a try.
 ---
 
