@@ -76,8 +76,8 @@ def run_research_system(query: str) -> str:
     return result["drafted_answer"]
 
 
-st.set_page_config(page_title="AI Research Workflow", layout="wide")
-st.title("🔬 AI-Powered Research Workflow")
+st.set_page_config(page_title="AI Research ", layout="wide")
+st.title("🔬 AI-Powered Research")
 
 query = st.text_input("Enter your research query:", "")
 run = st.button("Run Research")
